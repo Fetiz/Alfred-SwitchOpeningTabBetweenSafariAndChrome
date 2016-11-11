@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.fetizlee.alfred</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>CB90B2BE-433F-4701-86A9-EF100CE2E465</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1FC319C-55BB-4D84-8432-CCC498927A42</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>FAD6B5CD-A5FD-4A2D-910A-3754709A6BEE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>14D958F8-881A-4FFD-BFAC-C91C559D8F78</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Fetiz</string>
+	<key>description</key>
+	<string>Switch the active tab to the other browser</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Safari to Chrome/Chrome to Safari</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>property theURL : ""
+
+tell application "Safari"
+
+set theURL to URL of current tab of window 1
+
+end tell
+
+tell application "Google Chrome"
+if (count of windows) is 0
+    make new window
+  else
+    make new tab at end of tabs of front window
+end if
+
+delay 1
+
+set URL of active tab of front window to theURL
+
+activate
+
+end tell</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>14D958F8-881A-4FFD-BFAC-C91C559D8F78</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>tochrome</string>
+				<key>subtext</key>
+				<string>Processing</string>
+				<key>text</key>
+				<string>Switch active Safari Tab to Chrome</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>FAD6B5CD-A5FD-4A2D-910A-3754709A6BEE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>tosafari</string>
+				<key>subtext</key>
+				<string>Processing</string>
+				<key>text</key>
+				<string>Switch active tab in Chrome to Safari</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>CB90B2BE-433F-4701-86A9-EF100CE2E465</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>script</key>
+				<string>property theURL : ""
+
+tell application "Google Chrome"
+        
+        set theURL to URL of active tab of first window
+        
+end tell
+
+tell application "Safari"
+        if (count of windows) is 0 then
+      make new document
+        else
+                make new tab at end of tabs of front window
+        end if
+        
+        delay 1
+        
+        open location theURL
+        
+        activate
+        
+end tell</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B1FC319C-55BB-4D84-8432-CCC498927A42</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>keyword opchrome</string>
+	<key>uidata</key>
+	<dict>
+		<key>14D958F8-881A-4FFD-BFAC-C91C559D8F78</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+		<key>B1FC319C-55BB-4D84-8432-CCC498927A42</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>CB90B2BE-433F-4701-86A9-EF100CE2E465</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>210</integer>
+		</dict>
+		<key>FAD6B5CD-A5FD-4A2D-910A-3754709A6BEE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>70</integer>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
